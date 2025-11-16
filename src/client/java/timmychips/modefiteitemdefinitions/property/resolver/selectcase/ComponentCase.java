@@ -45,13 +45,15 @@ public class ComponentCase implements SelectPropertyHandler {
             if (EntityVariantHelper.isEntityVariant(Identifier.tryParse(component))) {
                 // Test if it can get entity variant from item stack
                 String entityVariant = castEntityVariantComponents(stack, component);
-                if (entityVariant != null) return castEntityVariantComponents(stack, component);
+                if (entityVariant != null)
+                    return castEntityVariantComponents(stack, component);
             }
             else {
                 String key = stack.getItem().toString() + "|" + "minecraft:component";
                 if (WARNED_MODELS.add(key)) LOGGER.warn("Unknown component predicate componentType: '{}'", componentId);
                 return null;
             }
+            return null;
         }
 
         String str;
