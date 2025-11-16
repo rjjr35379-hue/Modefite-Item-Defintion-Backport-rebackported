@@ -2,6 +2,7 @@ package timmychips.modefiteitemdefinitions.comp.util;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.GlobalPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import java.lang.reflect.Field;
@@ -9,6 +10,7 @@ public class MathUtils {
     private static Field dimensionField;
     private static Field posField;
     private static boolean fieldsInitialized = false;
+
     private static void initializeFields() {
         if (fieldsInitialized) return;
 
@@ -39,7 +41,9 @@ public class MathUtils {
             }
         }
 
-    }@Nullable //utility methods for global spos getpos returns blockpos from a globalpos if no then null
+    }
+
+    @Nullable //utility methods for global spos getpos returns blockpos from a globalpos if no then null
     public static BlockPos getPos(@Nullable GlobalPos globalPos) {
         if (globalPos == null) return null;
 
@@ -54,7 +58,9 @@ public class MathUtils {
             e.printStackTrace();
             return null;
         }
-    }@Nullable // returns dimesinpon RegistryKey<World> of a Globalpos or null if none
+    }
+
+    @Nullable // returns dimesinpon RegistryKey<World> of a Globalpos or null if none
     @SuppressWarnings("unchecked")
     public static RegistryKey<World> getDimension(@Nullable GlobalPos globalPos) {
         if (globalPos == null) return null;
@@ -72,20 +78,25 @@ public class MathUtils {
         }
         //checks if two positions are in the same positino/diemension
 
-    }public static boolean isSameDimension(@Nullable GlobalPos pos1, @Nullable GlobalPos pos2, @Nullable RegistryKey<World> dimension2) {
+    }
+
+    public static boolean isSameDimension(@Nullable GlobalPos pos1, @Nullable GlobalPos pos2, @Nullable RegistryKey<World> dimension2) {
         if (pos1 == null) return false;
 
         RegistryKey<World> dim1 = getDimension(pos1);
         RegistryKey<World> dim2 = pos2 != null ? getDimension(pos2) : dimension2;
 
         return dim1 != null && dim1.equals(dim2);
-    }public static boolean isValid(@Nullable GlobalPos globalPos) {
+    }
+
+    public static boolean isValid(@Nullable GlobalPos globalPos) {
         return globalPos != null && getDimension(globalPos) != null && getPos(globalPos) != null;
     }
     // i used reflection to get acces to mathpos since idk but minecraft said it's private :(
-
-    //since Java 21 added Math.Clamp; compat with java 17
+    //java 17 support
     public static float clamp(float value, float min, float max) {
         return Math.max(min, Math.min(value, max));
     }
 }
+
+
