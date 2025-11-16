@@ -45,7 +45,7 @@ public class ComponentType<T> {
         return this.nbtType;
     }
 
-//WIP
+    //WIP
     @Nullable
     public T get(ItemStack stack) {
         if (stack == null) return null;
@@ -105,7 +105,85 @@ public class ComponentType<T> {
     public static ComponentType<?> get(Identifier id) {
         return REGISTRY.get(id);
     }
-//all taken from https://minecraft.wiki/w/Data_component_format
+    //all taken from https://minecraft.wiki/w/Data_component_format
+    public static final ComponentType<NbtCompound> CUSTOM_DATA =
+            register("minecraft:custom_data", DataComponentTypes.CUSTOM_DATA, 10);
+    public static final ComponentType<Integer> MAP_COLOR =
+            register("minecraft:map_color", DataComponentTypes.MAP_COLOR, 3);
+    public static final ComponentType<NbtCompound> FIREWORK_EXPLOSION =
+            register("minecraft:firework_explosion", DataComponentTypes.FIREWORK_EXPLOSION, 10);
+
+    public static final ComponentType<NbtCompound> MAP_DECORATIONS =
+            register("minecraft:map_decorations", DataComponentTypes.MAP_DECORATIONS, 10);
+
+    public static final ComponentType<NbtElement> BOOK_GENERATION =
+            register("minecraft:book_generation", DataComponentTypes.BOOK_GENERATION, 3);
+
+    public static final ComponentType<Boolean> BOOK_RESOLVED =
+            register("minecraft:book_resolved", DataComponentTypes.BOOK_RESOLVED, 1);
+
+    public static final ComponentType<NbtCompound> SKULL_OWNER =
+            register("minecraft:skull_owner", DataComponentTypes.SKULL_OWNER, 10);
+
+    public static final ComponentType<NbtCompound> CONTAINER_LOOT =
+            register("minecraft:container_loot", DataComponentTypes.CONTAINER_LOOT, 10);
+
+    public static final ComponentType<Long> LOOT_TABLE_SEED =
+            register("minecraft:loot_table_seed", DataComponentTypes.LOOT_TABLE_SEED, 4);
+
+    public static final ComponentType<NbtCompound> BEES =
+            register("minecraft:bees", DataComponentTypes.BEES, 10);
+
+    public static final ComponentType<NbtElement> SUSPICIOUS_STEW_EFFECTS =
+            register("minecraft:suspicious_stew_effects", DataComponentTypes.SUSPICIOUS_STEW_EFFECTS, 9);
+
+    public static final ComponentType<NbtElement> BANNER_PATTERNS =
+            register("minecraft:banner_patterns", DataComponentTypes.BANNER_PATTERNS, 9);
+
+    public static final ComponentType<Integer> BASE_COLOR =
+            register("minecraft:base_color", DataComponentTypes.BASE_COLOR, 3);
+
+    public static final ComponentType<String> NOTE_BLOCK_SOUND =
+            register("minecraft:note_block_sound", DataComponentTypes.NOTE_BLOCK_SOUND, 8);
+
+    public static final ComponentType<String> RECIPES =
+            register("minecraft:recipes", DataComponentTypes.RECIPES, 8);
+
+    public static final ComponentType<Boolean> CREATIVE_SLOT_LOCK =
+            register("minecraft:creative_slot_lock", DataComponentTypes.CREATIVE_SLOT_LOCK, 1);
+
+    public static final ComponentType<String> LOCK =
+            register("minecraft:lock", DataComponentTypes.LOCK, 8);
+
+    public static final ComponentType<NbtCompound> DEBUG_STICK_STATE =
+            register("minecraft:debug_stick_state", DataComponentTypes.DEBUG_STICK_STATE, 10);
+
+    public static final ComponentType<String> INSTRUMENT =
+            register("minecraft:instrument", DataComponentTypes.INSTRUMENT, 8);
+
+    public static final ComponentType<NbtCompound> LODESTONE_POS =
+            register("minecraft:lodestone_pos", DataComponentTypes.LODESTONE_POS, 10);
+
+    public static final ComponentType<String> LODESTONE_DIMENSION =
+            register("minecraft:lodestone_dimension", DataComponentTypes.LODESTONE_DIMENSION, 8);
+
+    public static final ComponentType<Boolean> LODESTONE_TRACKED =
+            register("minecraft:lodestone_tracked", DataComponentTypes.LODESTONE_TRACKED, 1);
+
+    public static final ComponentType<Boolean> DAMAGE_RESISTANT =
+            register("minecraft:damage_resistant", DataComponentTypes.DAMAGE_RESISTANT, 1);
+
+    public static final ComponentType<Boolean> WEAPON =
+            register("minecraft:weapon", DataComponentTypes.WEAPON, 1);
+
+    public static final ComponentType<Boolean> REPAIRABLE =
+            register("minecraft:repairable", DataComponentTypes.REPAIRABLE, 1);
+
+    public static final ComponentType<NbtElement> CAN_BREAK =
+            register("minecraft:can_break", DataComponentTypes.CAN_BREAK, 9);
+
+    public static final ComponentType<Boolean> EQUIPPABLE =
+            register("minecraft:equippable", DataComponentTypes.EQUIPPABLE, 1);
     public static final ComponentType<Integer> CUSTOM_MODEL_DATA = register("minecraft:custom_model_data", DataComponentTypes.CUSTOM_MODEL_DATA, 3); //as an integer //example if (ComponentType.CUSTOM_MODEL_DATA.isIn(nbt)) {
     public static final ComponentType<String> CUSTOM_NAME = register("minecraft:custom_name", DataComponentTypes.CUSTOM_NAME, 8);
     public static final ComponentType<NbtElement> LORE = register("minecraft:lore", DataComponentTypes.LORE, 9);
@@ -120,7 +198,7 @@ public class ComponentType<T> {
 
     public static final ComponentType<NbtCompound> TRIM = register("minecraft:trim", DataComponentTypes.TRIM, 10);
 
-   public static final ComponentType<NbtCompound> LODESTONE_TRACKER = register("minecraft:lodestone_tracker", DataComponentTypes.LODESTONE_TRACKER, 10);
+    public static final ComponentType<NbtCompound> LODESTONE_TRACKER = register("minecraft:lodestone_tracker", DataComponentTypes.LODESTONE_TRACKER, 10);
     public static final ComponentType<NbtCompound> BUCKET_ENTITY_DATA = register("minecraft:bucket_entity_data", DataComponentTypes.BUCKET_ENTITY_DATA, 10);
     public static final ComponentType<String> POTION_CONTENTS = register("minecraft:potion_contents", DataComponentTypes.POTION_CONTENTS, 8);
     public static final ComponentType<Integer> CUSTOM_POTION_COLOR = register("minecraft:custom_potion_color", DataComponentTypes.CUSTOM_POTION_COLOR, 3);
@@ -137,6 +215,35 @@ public class ComponentType<T> {
     public static final ComponentType<NbtCompound> ENTITY_DATA = register("minecraft:entity_data", DataComponentTypes.ENTITY_DATA, 10);
     public static final ComponentType<NbtElement> CHARGED_PROJECTILES = register("minecraft:charged_projectiles", DataComponentTypes.CHARGED_PROJECTILES, 9);
     public static final ComponentType<NbtElement> BUNDLE_CONTENTS = register("minecraft:bundle_contents", DataComponentTypes.BUNDLE_CONTENTS, 9);
+    public static final ComponentType<Boolean> USING_ITEM =
+            register("minecraft:using_item", DataComponentTypes.USING_ITEM, 1);
+
+    public static final ComponentType<Integer> USE_DURATION =
+            register("minecraft:use_duration", DataComponentTypes.USE_DURATION, 3);
+
+    public static final ComponentType<String> DISPLAY_CONTEXT =
+            register("minecraft:display_context", DataComponentTypes.DISPLAY_CONTEXT, 8);
+
+    public static final ComponentType<String> USE_ANIMATION =
+            register("minecraft:use_animation", DataComponentTypes.USE_ANIMATION, 8);
+
+    public static final ComponentType<Boolean> THROWABLE =
+            register("minecraft:throwable", DataComponentTypes.THROWABLE, 1);
+
+    public static final ComponentType<NbtCompound> FOOD =
+            register("minecraft:food", DataComponentTypes.FOOD, 10);
+
+    public static final ComponentType<Boolean> GLINT =
+            register("minecraft:glint", DataComponentTypes.GLINT, 1);
+
+    public static final ComponentType<String> RARITY =
+            register("minecraft:rarity", DataComponentTypes.RARITY, 8);
+
+    public static final ComponentType<Integer> ENCHANTABLE =
+            register("minecraft:enchantable", DataComponentTypes.ENCHANTABLE, 3);
+
+    public static final ComponentType<String> ITEM_MODEL =
+            register("minecraft:item_model", DataComponentTypes.ITEM_MODEL, 8);
     @Override
     public String toString() {
         return "ComponentType{" + id + " -> " + nbtKey + "}";

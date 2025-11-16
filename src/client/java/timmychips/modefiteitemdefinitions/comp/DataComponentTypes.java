@@ -48,23 +48,58 @@ public static final String BLOCK_STATE = "block_state";
 
     //food
     public static final String FOOD = "food_properties";
+    public static final String USING_ITEM = "using_item";
+    public static final String USE_DURATION = "use_duration";
+    public static final String DISPLAY_CONTEXT = "display_context";
 
-    //misc
+    public static final String USE_ANIMATION = "use_animation";
+    public static final String THROWABLE = "throwable";
+
+    public static final String CUSTOM_POTION_EFFECTS = "CustomPotionEffects";
+
+    public static final String MAP_DECORATIONS = "Decorations";
+
+    public static final String BOOK_GENERATION = "generation";
+    public static final String BOOK_RESOLVED = "resolved";
+
     public static final String HIDE_FLAGS = "HideFlags";
     public static final String REPAIR_COST = "RepairCost";
     public static final String ATTRIBUTE_MODIFIERS = "AttributeModifiers";
     public static final String CAN_DESTROY = "CanDestroy";
     public static final String CAN_PLACE_ON = "CanPlaceOn";
 
-    //blck enty dtat
+
     public static final String BLOCK_ENTITY_DATA = "BlockEntityTag";
+    public static final String ENTITY_DATA = "EntityTag";
+    public static final String SKULL_OWNER = "SkullOwner";
+    public static final String CONTAINER_LOOT = "LootTable";
+    public static final String LOOT_TABLE_SEED = "LootTableSeed";
+    public static final String BEES = "Bees";
+    public static final String BUNDLE_CONTENTS = "Items";
+    public static final String SUSPICIOUS_STEW_EFFECTS = "effects";
+    public static final String BANNER_PATTERNS = "Patterns";
+    public static final String BASE_COLOR = "Base";
+    public static final String NOTE_BLOCK_SOUND = "note_block_sound";
+
+
+
+    public static final String GLINT = "glint";
+    public static final String RARITY = "rarity";
+    public static final String ENCHANTABLE = "enchantable";
+
+    public static final String ITEM_MODEL = "item_model";
+    //misc
+
+
+    //blck enty dtat
+
 
     //entity data
-    public static final String ENTITY_DATA = "EntityTag";
+
     public static final String COLOR = "color";
 
     //skuls
-    public static final String SKULL_OWNER = "SkullOwner";
+
 
     public static final String RECIPES = "Recipes";
 
@@ -74,39 +109,26 @@ public static final String BLOCK_STATE = "block_state";
 
 
     //container loot
-    public static final String CONTAINER_LOOT = "LootTable";
-    public static final String LOOT_TABLE_SEED = "LootTableSeed";
+
 
     public static final String LOCK = "Lock";
 
 
-    public static final String BEES = "Bees";
 
-    public static final String BUNDLE_CONTENTS = "Items";
 
     public static final String DEBUG_STICK_STATE = "DebugProperty";
 
-    public static final String SUSPICIOUS_STEW_EFFECTS = "effects";
 
-    public static final String BANNER_PATTERNS = "Patterns";
-    public static final String BASE_COLOR = "Base";
 
     public static final String INSTRUMENT = "instrument";
 
-    public static final String NOTE_BLOCK_SOUND = "note_block_sound";
+
 
     public static final String PROFILE = "SkullOwner";
 
 
 
-    public static final String MAP_DECORATIONS = "Decorations";
 
-
-    public static final String BOOK_GENERATION = "generation";
-    public static final String BOOK_RESOLVED = "resolved";
-
-
-    public static final String CUSTOM_POTION_EFFECTS = "CustomPotionEffects";
 
     public static final String LODESTONE_POS = "LodestonePos";
     public static final String LODESTONE_DIMENSION = "LodestoneDimension";
