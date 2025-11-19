@@ -1,7 +1,6 @@
 package timmychips.modefiteitemdefinitions.property.helper;
 
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.NbtComponent;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
@@ -17,18 +16,38 @@ public class EntityVariantHelper {
 
     /// Not components in this version, but are in 1.21.5
     static final List<Identifier> ENTITY_VARIANTS = List.of(
-            Identifier.ofVanilla("axolotl/variant"),
-            Identifier.ofVanilla("frog/variant")
+            new Identifier("minecraft", "axolotl/variant"),
+            new Identifier("minecraft", "frog/variant"),
+            new Identifier("minecraft", "cat/variant"),
+
+        new Identifier("minecraft", "fox/variant"),
+
+        new Identifier("minecraft", "wolf/variant"),
+        new Identifier("minecraft", "rabbit/variant"),
+
+            new Identifier("minecraft", "parrot/variant"),
+            new Identifier("minecraft", "painting/variant"),
+        new Identifier("minecraft", "mooshroom/variant"),
+            new Identifier("minecraft", "horse/variant"),
+        new Identifier("minecraft", "llama/variant")
+
     );
 
     // Axolotl variant names
     static final ArrayList<Identifier> AXOLOTL_VARIANT_LIST = new ArrayList<>(
             Arrays.asList(
-                    Identifier.ofVanilla("lucy"),
-                    Identifier.ofVanilla("wild"),
-                    Identifier.ofVanilla("gold"),
-                    Identifier.ofVanilla("cyan"),
-                    Identifier.ofVanilla("blue")
+                    new Identifier("minecraft", "lucy"),
+                    new Identifier("minecraft", "wild"),
+                    new Identifier("minecraft", "gold"),
+                    new Identifier("minecraft", "cyan"),
+                    new Identifier("minecraft", "blue")
+            )
+    );
+
+    static final ArrayList<Identifier> FOX_VARIANT_LIST = new ArrayList<>(
+            Arrays.asList(
+                    new Identifier("minecraft", "lucy"),
+                    new Identifier("minecraft", "lucy")
             )
     );
 
@@ -68,17 +87,26 @@ public class EntityVariantHelper {
      */
     public static String getBucketEntityVariant(ItemStack stack) {
 
-        NbtComponent bucketData = stack.get(DataComponentTypes.BUCKET_ENTITY_DATA);
+        NbtCompound nbt = stack.getNbt();
 
-        if (bucketData != null) {
-            NbtCompound root = bucketData.copyNbt(); // copy nbt data for safe reading
+        if (nbt == null) {
+            return null;
+        }
 
-            // Axolotl Variants
-            if (root.contains("Variant", 3)) { // Get value from axolotl variant string/index
-                int value = root.getInt("Variant");
-                return AXOLOTL_VARIANT_LIST.get(value).toString(); // Return the string associated with int
+        if (nbt.contains("BucketVariantTag", 10)) {
+            NbtCompound bucketData = nbt.getCompound("BucketVariantTag");
+
+            //the variants
+            if (bucketData.contains("Variant", 3)) {
+                int value = bucketData.getInt("Variant");
+
+                // Axolotl Variants if it's within bounds
+                if (value >= 0 && value < AXOLOTL_VARIANT_LIST.size()) {
+                    return AXOLOTL_VARIANT_LIST.get(value).toString();
+                }
             }
         }
-        return null;
+            return null;
+        }
     }
-}
+

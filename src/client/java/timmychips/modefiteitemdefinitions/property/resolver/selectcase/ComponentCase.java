@@ -2,13 +2,14 @@ package timmychips.modefiteitemdefinitions.property.resolver.selectcase;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
-import net.minecraft.component.ComponentType;
+
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
+import timmychips.modefiteitemdefinitions.comp.ComponentType;
 import timmychips.modefiteitemdefinitions.property.handler.SelectPropertyHandler;
 import timmychips.modefiteitemdefinitions.property.helper.EntityVariantHelper;
 import timmychips.modefiteitemdefinitions.property.resolver.ResolveRecursive;
@@ -37,25 +38,27 @@ public class ComponentCase implements SelectPropertyHandler {
             return null;
         }
 
-        ComponentType<?> componentType = Registries.DATA_COMPONENT_TYPE.get(componentId); // Retrieve component type from id
+        ComponentType<?> componentType = ComponentType.get(componentId); // Retrieve component type from id
         if (componentType == null) {
 
             // For entity variants; ignore warned models
             if (EntityVariantHelper.isEntityVariant(Identifier.tryParse(component))) {
                 // Test if it can get entity variant from item stack
                 String entityVariant = castEntityVariantComponents(stack, component);
-                if (entityVariant != null) return castEntityVariantComponents(stack, component);
+                if (entityVariant != null)
+                    return castEntityVariantComponents(stack, component);
             }
             else {
                 String key = stack.getItem().toString() + "|" + "minecraft:component";
                 if (WARNED_MODELS.add(key)) LOGGER.warn("Unknown component predicate componentType: '{}'", componentId);
                 return null;
             }
+            return null;
         }
 
         String str;
 
-        Object componentValue = stack.get(componentType);
+        Object componentValue = componentType.get(stack);
         if (componentValue instanceof Text textValue) {
             str = textValue.getString(); // Get the string without the surrounding literal from Text component types, and with string as is
         }
